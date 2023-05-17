@@ -1,13 +1,20 @@
 
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-reouter-dom'
 import NavBar from './components/NavBar/NavBar';
 import ItemListConteiner from './components/itemListConteiner/itemListConteiner';
-
+import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailConteiner';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <ItemListConteiner greeting = {'Bienvenidos a la tienda de indumentaria'}/>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element = {<ItemListConteiner/>}/>
+        <Route path='/category/:categoryId' element= {<ItemListConteiner/>}/>
+        <Route path='/item/itemId' element = {<ItemDetailConteiner/>}/>
+        <Route path='*' element = {<h1>404 Not Found</h1>}/>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
